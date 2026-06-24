@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DELTA GREEN SECURE ARCHIVE</title>
+<style>
+body{background:#000;color:#00ff00;font-family:Courier New,monospace;margin:30px}
+.hidden{display:none}
+.folder,.link{cursor:pointer;margin:8px 0}
+.folder:hover{text-decoration:underline}
+button,input{background:#000;color:#00ff00;border:1px solid #00ff00;padding:6px;font-family:inherit}
+pre{white-space:pre-wrap;border:1px solid #00ff00;padding:15px;max-height:70vh;overflow:auto;
+box-shadow:0 0 12px #00ff00;}
+h1{text-shadow:0 0 8px #00ff00}
+.cursor{animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.topbar{margin-bottom:15px}
+</style>
+</head>
+<body>
+
+<div id="loginPage">
+<h1>DELTA GREEN SECURE ARCHIVE <span class="cursor">█</span></h1>
+<p>USERNAME</p><input id="user">
+<p>PASSWORD</p><input id="pass" type="password">
+<br><br><button onclick="login()">LOGIN</button>
+<div id="error"></div>
+</div>
+
+<div id="mainMenu" class="hidden">
+<div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>ARCHIVE INDEX</h1>
+<div class="folder" onclick="showPage('operations')">[ OPERATIONS ]</div>
+<div class="folder" onclick="showPage('protocols')">[ PROTOCOLS ]</div>
+</div>
+
+<div id="operations" class="hidden">
+<div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>OPERATIONS</h1>
+<div class="folder" onclick="showPage('sweet')">[ OPERATION: SWEET HOME ]</div>
+<button onclick="showPage('mainMenu')">BACK</button>
+</div>
+
+<div id="sweet" class="hidden">
+<div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>OPERATION: SWEET HOME</h1>
+<div class="folder" onclick="showPage('casefiles')">[ CASE FILES ]</div>
+<button onclick="showPage('operations')">BACK</button>
+</div>
+
+<div id="casefiles" class="hidden">
+<div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>CASE FILES</h1>
+<div class="folder" onclick="showPage('dossier')">[ MISSION DOSSIER ]</div>
+<div class="folder" onclick="showPage('missing')">[ MISSING AGENTS ]</div>
+<button onclick="showPage('sweet')">BACK</button>
+</div>
+
+<div id="protocols" class="hidden">
+<div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>PROTOCOLS</h1>
+<div class="folder" onclick="showPage('broken')">[ THE BROKEN CHAIN PROTOCOL ]</div>
+<div class="folder" onclick="showPage('master')">[ MASTER/STRANGER PROTOCOL ]</div>
+<button onclick="showPage('mainMenu')">BACK</button>
+</div>
+
+<div id="dossier" class="hidden"><div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>MISSION DOSSIER</h1><pre>
+OPERATION CODENAME:  SWEET HOME
+CLEARANCE:           EYES ONLY — CELL █████████
+REPORT MADE AT:      █████████
+DATE REPORT FILED:   █████████
+
+
+BACKGROUND:
+
+On █████████, AGENT GREEN ceased all scheduled communication while conducting a field investigation in LaPlace, Louisiana.
+
+The last confirmed transmission referenced routine surveillance activity and indicated no immediate signs of hostile contact or anomalous escalation.
+
+Subsequent attempts to re-establish contact were unsuccessful. No corroborating incidents exist within local, state, or federal administrative channels.
+
+On █████████, AGENT GREEN’s status is classified as M.I.A.
+
+On █████████, DELTA GREEN AGENTS have been dispatched to LaPlace, Louisiana, under deep cover. They are tasked with continuing the ongoing investigation and establishing the whereabouts of the missing AGENT.
+
+OBSERVE THE BROKEN CHAIN.
+
+OBJECTIVES:
+
+INVESTIGATION
+Establish AGENT GREEN’s last known activities, contacts, and location within Laplace, Louisiana.
+Recover and preserve all physical and digital evidence relevant to AGENT GREEN’s disappearance.
+Determine the circumstances surrounding the loss of contact.
+
+ANOMALY ASSESSMENT
+Identify, document, and evaluate irregularities in the CIVILIAN population, local infrastructure, and environmental conditions.
+Assess the presence, scope, and nature of any anomalous activity within the area.
+
+OPERATIONAL SECURITY
+Maintain assigned CIVILIAN cover identities throughout the duration of the operations.
+Censor, obscure, or eliminate any identifiable links between field activities and DELTA GREEN operations.
+
+CONTAINMENT AND SUPPRESSION
+Prevent CIVILIAN exposure to anomalous phenomena.
+Employ diversion and disinformation tactics, and other approved measures, to preserve operational secrecy and public normalcy.
+Save lives.
+
+
+ADDENDUM A:  
+
+DELTA GREEN OPERATIVES assigned to OPERATION: SWEET HOME are authorized to requisition and carry low-grade to mid-grade firearms as operational requirements dictate.
+
+Authorized acquisition methods include:
+CIVILIAN-legal purchase under approved cover identities
+Procurement through approved DELTA GREEN logistic channels.
+
+Personnel are reminded that authorization does not supersede operational security requirements.
+
+Use of force is authorized when necessary to:
+Preserve AGENT safety
+Prevent CIVILIAN exposure to anomalous phenomena.
+Facilitate containment and suppression objectives.
+
+Noise discipline, evidence control, and exposure mitigation are to remain in effect at all times.
+
+Unauthorized escalation, indiscriminate use of force, or actions likely to compromise operational security may result in immediate review and disciplinary action.
+
+
+END DIRECTIVE:
+
+Continue investigation under the BROKEN CHAIN PROTOCOLS. Assume that all available information may be incomplete, manipulated, or intentionally withheld.
+
+AGENT GREEN’s status remains unknown. PROCEED ACCORDINGLY.
+
+
+Copies of this report: ████
+
+
+
+93-0621-35206
+SCIENTIA MORS EST
+</pre><button onclick="showPage('casefiles')">BACK</button></div>
+
+<div id="missing" class="hidden"><div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>MISSING AGENTS</h1><pre>
+CLEARANCE:           EYES ONLY — CELL █████████
+File Number:         DG-4471-G
+CALLSIGN:            GREEN
+STATUS:              M.I.A.
+AFFILIATIONS:        FEDERAL BUREAU OF INVESTIGATIONS
+ASSIGNMENT:          SPECIAL OPERATIVE
+
+
+PERSONAL INFORMATION:
+
+NAME:                █████████
+ALIAS:               JANE
+AGE:                 34
+WEIGHT:              115 lbs
+BUILD:               SMALL
+
+OCCUPATIONAL OVERVIEW:
+
+AGENT GREEN was recruited following participation in a multi-agency investigation involving a series of cults in the Midwestern United States.
+
+Performance evaluations consistently indicate strong investigative aptitude, slightly above-average analytical ability, and a high degree of initiative. AGENT GREEN routinely produced actionable leads from limited evidence and has demonstrated an ability to sustain investigations with minimal supervision.
+
+While capable of functioning within task-force environments, AGENT GREEN demonstrates a preference for independent work. Multiple evaluations note reduced effectiveness in highly collaborative settings due to a tendency to withhold tentative conclusions until sufficient evidence has been gathered.
+
+Outside of rare exceptions, AGENT GREEN will be assigned to low-level investigations, preliminary investigations, and other operations with limited supervisory oversight.
+
+
+ADDENDUM A: PSYCHOLOGICAL ASSESSMENT
+
+Evaluator:          Dr. Matthew Mercer, Ph.D.
+DATE:               ███████
+
+AGENT GREEN presents with no evidence of psychotic disorder, mood disorder, cognitive impairment, or substance abuse.
+
+AGENT GREEN remains fit for field deployment.
+
+
+ADDENDUM B: TRANSMISSIONS
+
+09-11-26|00:23|SECURE TRANSMISSION
+|I just arrived at the dummy house. Real nice place, I tell you. You guys really |spare no expense, huh? The bathroom alone is bigger than my apartment. |Anyways—|this |place gives me the creeps. It’s practically a ghost town—I haven’t |seen anyone yet, not even a jogger. In a suburban place like this, I’d expect |school buses, or a |person walking their dog—but there’s nothing.
+|Wait, hold on. Someone’s knocking on my door. 
+|End log.
+
+09-18-26|13:47|SECURE TRANSMISSION
+|Hello, GREEN again. I’m sorry about those corrupted logs—the signal here is |garbage. There might be something up with the cell tower? I’m not entirely sure |what’s |disrupting my transmissions, but chances are that it’s freaky cult shit. |[sigh] It’s always some fucking cult shit.
+|I haven’t confirmed anything yet, so could you scrub that from the record? |Whatever, never mind. 
+|Anyway, I found a lot of cold cases. Lots of missing persons reports were filed |in such a short time frame—I want to say in a month or two’s time. This should |have |absolutely been flagged by those web heads. I stopped by the sheriff’s |office today, gave him the usual FBI spiel. He didn’t seem to like me very much. |When |I |asked about the cases, he said they were resolved, but if you were to |check the cases, then you’d see that they’re clearly still open. Either someone |forgot to |close the cases, or someone’s lying. 
+|End log.
+
+09-21-26|09:11|SECURE TRANSMISSION
+|Sorry, I forgot to make a report yesterday. I—uhh, the funniest thing happened |actually. I followed some old rumors—like really old—old enough that the only |ones |who knew about it were some living fossils in a retirement home.
+|I’ll stop beating around the bush. I came into contact with an anomalous entity |yesterday, DESIGNATION YELLOW. Calls herself a bayou witch doctor—some real |voodoo |shit.
+|I followed the proper MASTER-EFFECT-PROTOCOLS afterward, and it came out |negative. But this witch doctor’s been more forthcoming than anyone else in this |damn |town. 
+|I’m following up on a lead today. Hopefully, I’ll make it before nightfall.
+|End log.
+
+
+
+Approved/forwarded by:
+Copies of this report: ████
+
+
+93-0319-57042 
+SCIENTIA MORS EST
+</pre><button onclick="showPage('casefiles')">BACK</button></div>
+
+<div id="broken" class="hidden"><div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>THE BROKEN CHAIN PROTOCOL</h1><pre>
+THE BROKEN CHAIN PROTOCOL is an assessment procedure administered to DELTAGREEN personnel suspected of anomalous exposure.
+
+The protocol consists of a standardized verbal trigger and the subsequent analysis of the subject’s response. When presented with the trigger phrase, affected individuals have been observed to produce symbolic or poetic responses that correlate with active anomalous conditions.
+
+TRIGGER PHRASE:
+“DOES THE BLACK MOON HOWL?”
+
+ADMINISTRATION:
+Present the trigger phrase to the subject.
+Record the response verbatim through a written medium.
+Do not interrupt the subject.
+Do not request clarification from the subject.
+Review the BROKEN CHAIN PROTOCOL and identify the anomaly.
+
+CLASSIFICATION OF RESPONSES:
+“NOT WHILE THE STARS SHINE.”
+STABLE SIGNAL — No anomalous effects detected. 
+“ONLY WHEN THE ALLEY CATS SING.”
+LOW ANOMALOUS ACTIVITY — Environmental irregularity and/or minor cognitive degradation is suspected.
+“ONLY WHEN WANING.”
+REALITY INSTABILITY — Indicates spatial/temporal anomalies.
+“NOT WITHOUT BLOOD.”
+HOSTILE PRESENCE — Active anomalous entity/s are within the immediate area.
+“NO, BUT THE SPARROW’S CALL IS SWEET.”
+MEMETIC CONTAMINATION —  Cognitive or linguistic hazard suspected, likely altering one’s perception of reality and/or cognitive facilities.
+“ONLY AT THE BLIND.”
+EXPOSURE RISK — CIVILIAN awareness or operational compromise is highly likely.
+“NO.”
+SIGNAL FAILURE —  The asset is compromised.
+UNCLASSIFIED RESPONSE
+ONTOLOGICAL UNKNOWN — New or unrecorded phrases are to be submitted for analysis.
+
+
+
+ADDENDUM:
+DELTA GREEN FIELD OPERATIVES are always equipped with a long-range radio on their person, keyed to an encrypted frequency. 
+
+In the event that an operative is classified as M.I.A., UNCONTACTABLE, or OPERATING UNDER UNKNOWN CONDITIONS, a team of AGENTS shall be dispatched to their last known location.
+
+The trigger phrase will be broadcast via radio at 3:33 AM, the duration lasting six minutes. If the OPERATIVE remains unresponsive, repeat this process until the status of the missing OPERATIVE is confirmed, or such sufficient time has passed that survival is highly unlikely.
+
+
+
+00-0114-102012
+SCIENTIA MORS EST
+</pre><button onclick="showPage('protocols')">BACK</button></div>
+
+<div id="master" class="hidden"><div class="topbar"><button onclick="logout()">LOG OUT</button></div>
+<h1>MASTER/STRANGER PROTOCOL</h1><pre>
+THE MASTER/STRANGER PROTOCOL is a structured interrogative framework used to evaluate DELTA GREEN personnel for cognitive degradation, anomalous influence, and compromised perception following suspected exposure to paranormal phenomena.
+
+For the purposes of this protocol, anomalous cognitive influence is divided into two primary classifications:
+
+
+MASTER-CLASS EFFECTS:
+
+MASTER-CLASS EFFECTS are defined as anomalous influences that alter volitional structure, motivational hierarchy, or behavioral prioritization within an otherwise stable cognitive framework.
+
+Subjects affected by MASTER-CLASS phenomena typically retain: 
+Continuous autobiographical identity.
+Coherent sensory perception.
+Stable linguistic and memory function.
+
+However, decision-making processes may exhibit:
+Reprioritization of mission objectives.
+Unexplained protective or adversarial bias toward specific entities, locations, or concepts.
+Persistence of behavioral patterns inconsistent with baseline psychological profile.
+
+MASTER-CLASS influence is therefore considered a distortion of agency rather than perception.
+
+Subjects may not recognize impairment.
+
+
+STRANGER-CLASS EFFECTS:
+
+STRANGER_CLASS EFFECTS are defined as anomalous influences that disrupt the stability of perceptual anchoring, referential mapping, or identity continuity within the subject’s cognitive model of reality.
+
+Subjects affected by STRANGER-CLASS phenomena may exhibit:
+Failure to consistently recognize individuals, locations, or objects.
+Discrepancies in environmental recall across short time intervals.
+Conflicting or unstable descriptions of identical stimuli.
+Perceptual substitution or misidentification of familiar references.
+
+STRANGER-CLASS influence is therefore considered a distortion of reference rather than intent.
+
+Subjects may not recognize impairment.
+
+ADDENDUM A: MASTER AND STRANGER RELATIONSHIPS
+
+MASTER and STRANGER classifications are not mutually exclusive. 
+
+In combined exposure cases, subjects may present:
+Stable perception with compromised agency (MASTER-DOMINANT)
+Stable agency with compromised perception (STRANGER-DOMINANT)
+Reclusive instability wherein both perception and agency are mutually reinforcing erroneous interpretations of reality.
+
+Such cases are considered high-risk due to the reduced reliability of self-reporting.
+
+
+ADDENDUM B: MASTER/STRANGER QUESTIONNAIRE
+
+INSTRUCTIONS:
+Answer all questions in order. Do not explain your answers.
+If a question cannot be answered, mark it as “UNSURE.”
+Do not return to previous questions once completed.
+There is no section 07.
+
+SECTION 01: IDENTITY AFFIRMATION
+What is your full name?
+What is your date of birth?
+What is your current designation?
+What is your mother’s full maiden name?
+What is your father’s full name?
+
+SECTION 02: PRESENCE DISTORTION
+How many people are currently in the room with you?
+How many people entered the room within the last ten minutes?
+How many people have left the room within the last ten minutes?
+How many of those people can you name without hesitation?
+How many shadows do these people have?
+Do you recognize the one without a shadow?
+
+SECTION 03: ENVIRONMENTAL DEGREDATION
+How many lights are in the room?
+How many windows are in the room?
+How many doors are in the room?
+How many corners does the room have?
+Is the room larger, smaller, or unchanged compared to your last memory of it?
+
+SECTION 04: TEMPORAL ALIGNMENT
+What is the current time?
+What time did you begin this questionnaire?
+What is the last event you remember prior to beginning this questionnaire?
+
+SECTION 05: SOCIAL RECOGNITION
+Identify the last person you spoke to.
+Are they still the same person you remember speaking to?
+Do you recognize that person’s face?
+Do you recognize that person’s voice?
+Do other DELTA GREEN agents recognize this person?
+
+SECTION 06: PERCEPTUAL INTEGRITY
+Have you experienced missing time in the last 24 hours?
+Have you experienced hearing your name being spoken when no one was present?
+Have you seen movement that stopped when observed directly?
+
+SECTION 08: AUDITORY PHENOMENA
+Do you hear singing?
+If yes, is it continuous, intermittent, or directional?
+Does the singing stop when you locate its source?
+Have you made attempts to block out the song?
+If yes, do you still hear it?
+
+SECTION 09: COGNITIVE DISSONANCE
+Is any question in this form “difficult to understand?”
+Is any question in this form “obviously incorrect?”
+Do you feel that any question was intended specifically for you?
+
+SECTION 10: FINAL CONFIRMATION
+Are you alone?
+Are you certain?
+Do your eyes hurt?
+Are your ears bleeding?
+Is your skin itchy?
+Do you smell sulfur?
+Are you answering these questions willingly?
+Who are you?
+
+
+ADDENDUM C: SCORING RUBRIC
+
+All responses are evaluated on a binary deviation model.
+0 — CORRECT RESPONSE 
+1 — UNSURE
+2 — INCORRECT OR ANOMALOUS RESPONSE
+
+CLASSIFICATION TRESHOLDS
+0-5   — STABLE    [No action required. Continue routine monitoring.]
+6-12  — MILD      [Initiate observation period. Retest in 4 hours. Field 
+                   duty suspended pending retest.]
+13-20 — SEVERE    [Immediate restriction from operations. Mandatory        
+                   psychotronic screening. No unsupervised activity.]
+21+   — HAZARDOUS [Containment protocol activated. Administration of  
+                   Type-C amnestics authorized.]
+
+AUTOMATIC OVERRIDES 
+Any reference to SECTION 07 results in immediate RED designation.
+Identity inconsistency within SECTION 01 and SECTION 10 results in minimum ORANGE designation.
+Six or more UNSURE responses result in minimum YELLOW designation.
+
+
+ADDENDUM D: OPERATIONAL NOTE
+
+An incorrect or uncertain response is defined as any answer that is factually inaccurate, internally inconsistent, or indicative of perceptual or cognitive instability.
+
+
+
+03-4567-23606
+SCIENTIA MORS EST
+</pre><button onclick="showPage('protocols')">BACK</button></div>
+
+<script>
+function login(){
+const u=document.getElementById('user').value.toUpperCase();
+const p=document.getElementById('pass').value.toUpperCase();
+if(u==='GREENBOX' && p==='KNOWLEDGEISDEATH'){
+document.getElementById('loginPage').style.display='none';
+document.getElementById('mainMenu').style.display='block';
+}else{
+document.getElementById('error').innerText='ACCESS DENIED';
+}
+}
+function logout(){
+hideAll();
+document.getElementById('loginPage').style.display='block';
+}
+function hideAll(){
+['mainMenu','operations','sweet','casefiles','protocols','dossier','missing','broken','master']
+.forEach(id=>document.getElementById(id).style.display='none');
+}
+function showPage(id){
+hideAll();
+document.getElementById(id).style.display='block';
+}
+</script>
+</body>
+</html>
